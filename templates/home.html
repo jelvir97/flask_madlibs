@@ -1,16 +1,20 @@
 
 {% extends 'base.html' %}
 
-{% block title %}Madlib - Form{% endblock %}
+{% block title %}Madlib - Story List{% endblock %}
     {% block header %}<h1>Madlibs</h1>{% endblock %}
 
     {% block contents%}
-    <h2>Fill in the prompts below:</h2>
-    <form action="/story">
-        {% for word in prompts%}
-            <p>{{word}} <input type="text" name="{{word}}" id=""></p>
+    <h2>Choose a story:</h2>
+    <form action="/story_form">
+        <select name="title">
+        {% for key in keys%}
+            <a href="/story_form/{{key}}">{{key}}</a>
+            <option value="{{key}}">{{key}}</option>
+            
         {% endfor %}
-        <button type="submit">Let's go!</button>
+        
+        </select>
+        <button type="submit">Go!</button>
     </form>
-
     {% endblock %}
